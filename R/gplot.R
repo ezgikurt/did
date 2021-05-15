@@ -11,7 +11,7 @@
 #' @keywords internal
 #'
 #' @export
-gplot <- function(ssresults, ylim=NULL, xlab=NULL, ylab=NULL, title="Group", xgap=1,
+gplot <- function(ssresults, ylim=NULL, xlim = NULL, xlab=NULL, ylab=NULL, title="Group", xgap=1,
                   legend=TRUE, ref_line = 0, theming = TRUE) {
   dabreaks <- ssresults$year[seq(1, length(ssresults$year), xgap)]
 
@@ -25,6 +25,7 @@ gplot <- function(ssresults, ylim=NULL, xlab=NULL, ylab=NULL, title="Group", xga
     #geom_ribbon(aes(x=as.numeric(year)), alpha=0.2) +
     geom_errorbar(aes(colour=post), width=0.1) +
     scale_y_continuous(limits=ylim) +
+    scale_x_continuous(limits=xlim) +
     #scale_x_discrete(breaks=dabreaks, labels=as.character(dabreaks)) +
     scale_x_continuous(breaks=as.numeric(dabreaks), labels=as.character(dabreaks)) +
     scale_color_manual(drop=FALSE, values=c("#e87d72","#56bcc2"), breaks = c(0, 1), labels = c('Pre','Post')) +
@@ -62,7 +63,7 @@ gplot <- function(ssresults, ylim=NULL, xlab=NULL, ylab=NULL, title="Group", xga
 #' @keywords internal
 #'
 #' @export
-splot <- function(ssresults, ylim=NULL, xlab=NULL, ylab=NULL, title="Group",
+splot <- function(ssresults, ylim=NULL, xlim = NULL, xlab=NULL, ylab=NULL, title="Group",
                   legend=TRUE, ref_line = 0, theming = TRUE) {
 
   # names of variables are "weird" for this function because this code builds
