@@ -51,6 +51,7 @@ ggdid.MP <- function(object,
                      ylim=NULL,
                      xlab=NULL,
                      ylab=NULL,
+                     xlim=NULL,
                      title="Group",
                      xgap=1,
                      ncol=1,
@@ -81,7 +82,7 @@ ggdid.MP <- function(object,
   alp <- mpobj$alp
 
   mplots <- gplot(subset(results, group %in% g),
-                  ylim, xlab, ylab, title, xgap,
+                  ylim, xlim, xlab, ylab, title, xgap,
                   legend, ref_line, theming) +
     facet_wrap(~grtitle, ncol = ncol, scales = 'free')
 
@@ -100,6 +101,7 @@ ggdid.AGGTEobj <- function(object,
                            ylim=NULL,
                            xlab=NULL,
                            ylab=NULL,
+                           xlim=NULL,
                            title="",
                            xgap=1,
                            legend=TRUE,
@@ -125,9 +127,9 @@ ggdid.AGGTEobj <- function(object,
 
   if (object$type == "group") {
     # alternative plot if selective/group treatment timing plot
-    p <- splot(results, ylim, xlab, ylab, title, legend, ref_line, theming)
+    p <- splot(results, ylim, xlim, xlab, ylab, title, legend, ref_line, theming)
   } else {
-    p <- gplot(results, ylim, xlab, ylab, title, xgap, legend, ref_line, theming)
+    p <- gplot(results, ylim, xlim, xlab, ylab, title, xgap, legend, ref_line, theming)
   }
 
   p
