@@ -25,9 +25,8 @@ gplot <- function(ssresults, ylim=NULL, xlim = NULL, xlab=NULL, ylab=NULL, title
     #geom_ribbon(aes(x=as.numeric(year)), alpha=0.2) +
     geom_errorbar(aes(colour=post), width=0.1) +
     scale_y_continuous(limits=ylim) +
-    scale_x_continuous(limits=xlim) +
     #scale_x_discrete(breaks=dabreaks, labels=as.character(dabreaks)) +
-    scale_x_continuous(breaks=as.numeric(dabreaks), labels=as.character(dabreaks)) +
+    scale_x_continuous(breaks=as.numeric(dabreaks), labels=as.character(dabreaks), limits = xlim) +
     scale_color_manual(drop=FALSE, values=c("#e87d72","#56bcc2"), breaks = c(0, 1), labels = c('Pre','Post')) +
     labs(x = xlab, y = ylab, title = title, color = NULL)
 
