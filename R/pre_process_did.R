@@ -56,7 +56,8 @@ pre_process_did <- function(yname,
   # Groups with treatment time bigger than max time period are considered to be never treated
   asif_never_treated <- (data[,gname] > max(tlist, na.rm = TRUE))
   asif_never_treated[is.na(asif_never_treated)] <- FALSE
-  data[asif_never_treated, gname] <- 0
+  #data[asif_never_treated, gname] <- 0
+  data[(asif_never_treated | is.na(data[[gname]])),gname] <- 0
 
   # list of treated groups (by time) from smallest to largest
   glist <- unique(data[,gname], )[order(unique(data[,gname]))]
